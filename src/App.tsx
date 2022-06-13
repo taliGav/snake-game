@@ -16,15 +16,24 @@ import "./App.css";
   ]
   */
 
-const Row: React.FC<{ size: number , rowNum:number}> = ({ size , rowNum }) => {
-  // const isGray = true;
-  
-  const isEven = (i = 0) => {
-      return ((rowNum % 2 === 0) && (i % 2 === 0)) ? true : false;
-      // return i % 2 === 0;
-    };
-    
-  
+const Row: React.FC<{ size: number, rowNum: number }> = ({ size, rowNum }) => {
+
+  const isGray = (i = 0) => {
+    if ((rowNum % 2 === 0) && (i % 2 === 0))
+      return true
+
+    else if ((i % 2 !== 0) && (rowNum % 2 !== 0))return true
+    else return false
+  }
+
+
+
+  // const isGray = (i = 0) => {
+  //     return ((rowNum % 2 === 0) && (i % 2 === 0)) ? true : false;
+  //     // return i % 2 === 0;
+  //   };
+
+
 
   return (
     <div
@@ -45,9 +54,8 @@ const Row: React.FC<{ size: number , rowNum:number}> = ({ size , rowNum }) => {
             alignContent: "center",
             justifyContent: "center",
             border: "0.5px solid #3a3a3a",
-            // backgroundColor: isGray? "#b3b3b3" : "#fff" ,
-            backgroundColor: isEven(i) ? "#fff" : "#b3b3b3",
-            color: isEven(i) ? "#b3b3b3": "#fff" ,
+            backgroundColor: isGray(i) ? "#fff" : "#b3b3b3",
+            color: isGray(i) ? "#b3b3b3" : "#fff",
           }}
         >
           <p>{i + 1}</p>
@@ -69,7 +77,7 @@ const Matrix: React.FC<{ size: number }> = ({ size }) => {
       }}
     >
       {new Array(size).fill(1).map((_, i) => (
-        <Row size={size} key={i} rowNum = {i}/>
+        <Row size={size} key={i} rowNum={i} />
       ))}
     </div>
   );
