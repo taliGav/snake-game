@@ -16,12 +16,12 @@ import "./App.css";
   ]
   */
 
-const Row: React.FC<{ size: number , key:number}> = ({ size , key }) => {
+const Row: React.FC<{ size: number , rowNum:number}> = ({ size , rowNum }) => {
   // const isGray = true;
   
   const isEven = (i = 0) => {
-      // return ((key % 2 === 0) && (i % 2 === 0)) ? true : false;
-      return i % 2 === 0;
+      return ((rowNum % 2 === 0) && (i % 2 === 0)) ? true : false;
+      // return i % 2 === 0;
     };
     
   
@@ -69,7 +69,7 @@ const Matrix: React.FC<{ size: number }> = ({ size }) => {
       }}
     >
       {new Array(size).fill(1).map((_, i) => (
-        <Row size={size} key={i} />
+        <Row size={size} key={i} rowNum = {i}/>
       ))}
     </div>
   );
