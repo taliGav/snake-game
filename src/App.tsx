@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, MouseEventHandler } from "react";
 import "./App.css";
 
 /* 
@@ -16,24 +16,19 @@ import "./App.css";
   ]
   */
 
+const updateTile = (ev:MouseEventHandler) => { console.log('click ev', ev) }
+// const updateTile: <{ ev: MouseEvent, rowNum: Number, colNum: number, color: string }> = ({ ev, rowNum, colNum, color = "#AEDBCE" }) => { console.log('ev', ev) }
+
+
 const Row: React.FC<{ size: number, rowNum: number }> = ({ size, rowNum }) => {
 
-  const isGray = (i = 0) => {
-    if ((rowNum % 2 === 0) && (i % 2 === 0))
-      return true
+  const isBgcGray = (i = 0) => {
+    if ((rowNum % 2 === 0) && (i % 2 === 0)) return true
 
-    else if ((i % 2 !== 0) && (rowNum % 2 !== 0))return true
+    else if ((i % 2 !== 0) && (rowNum % 2 !== 0)) return true
+
     else return false
   }
-
-
-
-  // const isGray = (i = 0) => {
-  //     return ((rowNum % 2 === 0) && (i % 2 === 0)) ? true : false;
-  //     // return i % 2 === 0;
-  //   };
-
-
 
   return (
     <div
@@ -46,7 +41,11 @@ const Row: React.FC<{ size: number, rowNum: number }> = ({ size, rowNum }) => {
     >
       {new Array(size).fill(1).map((_, i) => (
         <div
+        onClick={console.log(ev)}
+        // onClick={updateTile(ev)}
+        // onClick={updateTile(ev, rowNum, colNum, color = "#AEDBCE")}
           key={i}
+          id={'tile' + rowNum + i}
           style={{
             display: "flex",
             height: "60px",
@@ -54,8 +53,8 @@ const Row: React.FC<{ size: number, rowNum: number }> = ({ size, rowNum }) => {
             alignContent: "center",
             justifyContent: "center",
             border: "0.5px solid #3a3a3a",
-            backgroundColor: isGray(i) ? "#fff" : "#b3b3b3",
-            color: isGray(i) ? "#b3b3b3" : "#fff",
+            backgroundColor: isBgcGray(i) ? "#fff" : "#b3b3b3",
+            color: isBgcGray(i) ? "#b3b3b3" : "#fff",
           }}
         >
           <p>{i + 1}</p>
