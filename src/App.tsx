@@ -16,7 +16,10 @@ import "./App.css";
   ]
   */
 
-const updateTile = (ev:MouseEventHandler) => { console.log('click ev', ev) }
+const updateTile = (ev: MouseEventHandler):object => {
+  console.log('click ev', ev)
+  return ev
+}
 // const updateTile: <{ ev: MouseEvent, rowNum: Number, colNum: number, color: string }> = ({ ev, rowNum, colNum, color = "#AEDBCE" }) => { console.log('ev', ev) }
 
 
@@ -41,9 +44,9 @@ const Row: React.FC<{ size: number, rowNum: number }> = ({ size, rowNum }) => {
     >
       {new Array(size).fill(1).map((_, i) => (
         <div
-        onClick={console.log(ev)}
-        // onClick={updateTile(ev)}
-        // onClick={updateTile(ev, rowNum, colNum, color = "#AEDBCE")}
+        onClick={updateTile(ev)}
+          // onClick={console.log(ev)}
+          //  onClick={updateTile(ev, rowNum, colNum, color = "#AEDBCE")}
           key={i}
           id={'tile' + rowNum + i}
           style={{
