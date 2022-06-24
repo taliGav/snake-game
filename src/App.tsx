@@ -20,7 +20,7 @@ import "./App.css";
 
 // const updateTile: <{ ev: MouseEvent, rowNum: Number, colNum: number, color: string }> = ({ ev, rowNum, colNum, color = "#AEDBCE" }) => { console.log('ev', ev) }
 
-
+// find out how to catch one tile and change background color
 
 
 const Tile: React.FC<{
@@ -31,7 +31,6 @@ const Tile: React.FC<{
     //  onClick 
   }) => {
 
-//check
     //change element background color on click
     const tileClickedRef = useRef<HTMLDivElement>(null);
 
