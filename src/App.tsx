@@ -22,6 +22,10 @@ import "./App.css";
 
 // find out how to catch one tile and change background color
 
+// destination time
+// cv - 7/3/22
+// tile - 7/3/22
+// wolt - 7/2/22
 
 const Tile: React.FC<{
   size: number, rowNum: number, colNum: number, idx: number,
